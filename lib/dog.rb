@@ -59,8 +59,8 @@ class Dog
       from dogs
       where name = ? and breed = ?
     SQL
-    row = DB[:conn].execute(sql, name, breed)
-    if row[0] is nil
+    row = DB[:conn].execute(sql, name, breed)[0]
+    if row[0] == nil
       self.create(name: name, breed: breed)
     else
       self.new_from_db(row)
